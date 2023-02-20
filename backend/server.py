@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route("/<path:path>")
 def client(path):
 
-    proc = subprocess.Popen(["./backend/test"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    proc = subprocess.Popen(["backend/test"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     out, error = proc.communicate()
 
