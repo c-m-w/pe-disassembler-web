@@ -1,0 +1,1 @@
+/usr/bin/c++  -m32   CMakeFiles/test-print.dir/test-print.cpp.o  -o test-print 
