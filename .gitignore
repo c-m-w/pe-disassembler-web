@@ -1,0 +1,42 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+pe-disassembler/dist
+pe-disassembler/tmp
+pe-disassembler/out-tsc
+pe-disassembler/bazel-out
+
+# Node
+pe-disassembler/node_modules
+pe-disassembler/npm-debug.log
+pe-disassembler/yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+pe-disassembler/.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+pe-disassembler/.angular/cache
+pe-disassembler/.sass-cache/
+pe-disassembler/connect.lock
+pe-disassembler/coverage
+pe-disassembler/libpeerconnection.log
+pe-disassembler/testem.log
+pe-disassembler/typings
+
+# System files
+.DS_Store
+pe-disassembler/Thumbs.db

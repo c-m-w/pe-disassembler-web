@@ -1,0 +1,30 @@
+/* header styles */
+
+header {
+    background-image: linear-gradient(var(--dark), var(--light));
+    
+    padding-top: 1rem;
+}
+
+header > div {
+    width: max-content;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+}
+
+header h1,
+header h2 {
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+header h2 {
+    font-weight: 300;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+}

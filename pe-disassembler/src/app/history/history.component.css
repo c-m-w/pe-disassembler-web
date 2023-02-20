@@ -1,0 +1,54 @@
+/* history styles */
+
+#history h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    border-bottom: 1px solid var(--border);
+}
+
+#history p {
+    margin: 0;
+}
+
+.pe {
+    display: grid;
+    grid-template-areas: "id name size"
+                         ". date view";
+    grid-template-columns: max-content 1fr 1fr;
+    gap: 1.5rem 0.5rem;
+    padding: 0.75rem 0;
+
+    background-image: linear-gradient(var(--dark), var(--light) 7%, var(--light) 93%, var(--dark));
+
+    margin-bottom: 1.5rem;
+}
+
+.id {
+    grid-area: id;
+    font-weight: 300;
+}
+
+.name {
+    grid-area: name;
+}
+
+.size {
+    grid-area: size;
+    justify-self: end;
+}
+
+.date {
+    grid-area: date;
+}
+
+.view {
+    grid-area: view;
+    width: 2rem;
+    margin-top: -0.375rem;
+    justify-self: end;
+}
+
+.view:hover {
+    cursor: pointer;
+}

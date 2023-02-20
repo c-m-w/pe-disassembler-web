@@ -1,0 +1,21 @@
+/* upload styles */
+
+#upload {
+    width: 7rem;
+    margin: 4rem auto;
+}
+
+#upload:hover {
+    cursor: pointer;
+}
+
+#upload img {
+    width: 100%;
+    margin-left: -1rem;
+}
+
+#upload p {
+    font-weight: 300;
+    text-align: center;
+    margin-top: 0.25rem;
+}

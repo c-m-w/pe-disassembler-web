@@ -1,0 +1,7 @@
+<!-- section-header -->
+
+<div class="section-header" (click)="onToggle.emit()">
+    <img src="/assets/icons/down.png" *ngIf="enabled" />
+    <img src="/assets/icons/right.png" *ngIf="!enabled" />
+    <h1>{{name}}</h1>
+</div>
