@@ -5,13 +5,23 @@
     margin: 4rem auto;
 }
 
-#upload:hover {
+#upload label {
+    
+    display: inline-block;
+    width: 6rem;
+    height: 6rem;
+    background-image: url("/assets/icons/file.png");
+    background-size: cover;
+    margin-left: -0.5rem;
+}
+
+#upload label:hover {
     cursor: pointer;
 }
 
-#upload img {
-    width: 100%;
-    margin-left: -1rem;
+#upload input {
+    position: absolute;
+    opacity: 0;
 }
 
 #upload p {

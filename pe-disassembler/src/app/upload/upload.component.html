@@ -1,6 +1,7 @@
 <!-- upload -->
 
 <div id="upload">
-    <img src="/assets/icons/file.png" />
+    <label for="file"></label>
+    <input type="file" id="file" (change)="uploadFile($event)" />
     <p>Upload a file...</p>
 </div>

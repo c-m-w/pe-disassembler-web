@@ -1,6 +1,7 @@
 <!-- detail -->
 
 <div id="detail">
+    <img class="go-back" src="/assets/icons/go-back.png" (click)="goBack()" />
     <h1>{{pe.name}}</h1>
     <h2>{{pe.date}}</h2>
 
@@ -8,7 +9,70 @@
         [name]="'NT Header'"
         [enabled]="showSections[0]"
         (onToggle)="toggleSection(0)"></app-section-header>
-    <section *ngIf="showSections[0]">
-        <h1>yo</h1>
+    <section class="data-display" *ngIf="showSections[0]">
+        <p>Image base:</p>
+        <p class="value">0x{{pe.data.nt.image_base.toString(16) | uppercase}}</p>
+        <p>Image size:</p>
+        <p class="value">0x{{pe.data.nt.image_size.toString(16) | uppercase}}</p>
+        <p>Entry point:</p>
+        <p class="value">0x{{pe.data.nt.entry_point.toString(16) | uppercase}}</p>
+        <p>Build time:</p>
+        <p class="value">{{pe.data.nt.build_time}}</p>
+    </section>
+
+    <app-section-header
+        [name]="'Sections'"
+        [enabled]="showSections[1]"
+        (onToggle)="toggleSection(1)"></app-section-header>
+    <section *ngIf="showSections[1]">
+        <div class="sections data-display" *ngFor="let section of pe.data.sections">
+            <h1>{{section.name}}</h1>
+            <p class="label">RVA:</p>
+            <p class="value">0x{{section.rva.toString(16)}}</p>
+            <p class="label">Size:</p>
+            <p class="value">0x{{section.size.toString(16)}}</p>
+        </div>
+    </section>
+
+    <app-section-header
+        [name]="'Exports'"
+        [enabled]="showSections[2]"
+        (onToggle)="toggleSection(2)"></app-section-header>
+    <section *ngIf="showSections[2]">
+        <div class="sections data-display" *ngFor="let export of pe.data.exports; let i = index">
+            <h1>({{i + 1}})</h1>
+            <p class="label">Name:</p>
+            <p class="value">{{export.name}}</p>
+            <p class="label">RVA:</p>
+            <p class="value">0x{{export.rva.toString(16)}}</p>
+        </div>
+    </section>
+
+    <app-section-header
+        [name]="'Imports'"
+        [enabled]="showSections[3]"
+        (onToggle)="toggleSection(3)"></app-section-header>
+    <section *ngIf="showSections[3]">
+        <div class="data-display" *ngFor="let module of pe.data.imports">
+            <h1 class="full-span">{{module.module}}:</h1>
+            <div class="sections data-display sub-list" *ngFor="let import of module.list; let i = index">
+                <h1>({{i + 1}})</h1>
+                <p class="label">{{import}}</p>
+            </div>
+        </div>
+    </section>
+
+    <app-section-header
+        [name]="'Relocation Tables'"
+        [enabled]="showSections[4]"
+        (onToggle)="toggleSection(4)"></app-section-header>
+    <section *ngIf="showSections[4]">
+        <div class="sections data-display" *ngFor="let relocation of pe.data.relocations; let i = index">
+            <h1>({{i + 1}})</h1>
+            <p class="label">RVA:</p>
+            <p class="value">0x{{relocation.rva.toString(16) | uppercase}}</p>
+            <p class="label">Entries:</p>
+            <p class="value">{{relocation.entries.toString(10)}}</p>
+        </div>
     </section>
 </div>

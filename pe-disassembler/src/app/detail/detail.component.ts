@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from "@angular/common";
 import { PeService } from '../pe.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class DetailComponent {
     showSections: boolean[] = [false, false, false, false, false];
 
     constructor(private peService: PeService,
-        private route: ActivatedRoute) { }
+        private route: ActivatedRoute,
+        private location: Location) { }
 
     ngOnInit(): void {
 
@@ -26,5 +28,10 @@ export class DetailComponent {
     toggleSection(section: number): void {
 
         this.showSections[section] = !this.showSections[section];
+    }
+
+    goBack(): void {
+
+        this.location.back();
     }
 }
