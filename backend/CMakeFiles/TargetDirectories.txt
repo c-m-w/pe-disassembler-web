@@ -1,3 +1,0 @@
-/home/cole/repos/pe-disassembler-web/backend/CMakeFiles/rebuild_cache.dir
-/home/cole/repos/pe-disassembler-web/backend/CMakeFiles/edit_cache.dir
-/home/cole/repos/pe-disassembler-web/backend/CMakeFiles/test-print.dir
