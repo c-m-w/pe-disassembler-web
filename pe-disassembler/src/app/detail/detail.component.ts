@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from "@angular/common";
-import { PeService } from '../pe.service';
+import { ApiService } from '../api.service';
 
 @Component({
     selector: 'app-detail',
@@ -13,7 +13,7 @@ export class DetailComponent {
     pe?: any;
     showSections: boolean[] = [false, false, false, false, false];
 
-    constructor(private peService: PeService,
+    constructor(private apiService: ApiService,
         private route: ActivatedRoute,
         private location: Location) { }
 
@@ -21,8 +21,14 @@ export class DetailComponent {
 
         const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
 
-        this.peService.getData()
-            .subscribe(data => {this.pe = data[id - 1]; console.log(data[id-1])});
+        this.apiService.getData()
+            .subscribe(data => {
+                const pe = data.data[id-1];
+
+                console.log(data.data);
+                this.pe = {...pe, data: JSON.parse(pe.data)};
+                console.log(this.pe);
+            });
     }
 
     toggleSection(section: number): void {

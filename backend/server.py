@@ -2,6 +2,8 @@
 
 import subprocess
 import os
+import json
+from datetime import datetime
 
 from flask import Flask, send_from_directory, request
 from flask_cors import CORS
@@ -11,6 +13,7 @@ from werkzeug.utils import secure_filename
 from tables import *
 from allowed_file import allowed_file
 from make_response import make_response
+from disassemble import disassemble
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "backend/tmp"
@@ -50,11 +53,39 @@ def upload():
     
     fname = secure_filename(file.filename)
     path = os.path.join(app.config['UPLOAD_FOLDER'], fname)
-    print(file)
 
     file.save(path)
+    
+    data = json.loads(disassemble(path))
+    date = datetime.today().strftime("%B %d %Y")
+    size = int(os.path.getsize(path) / 1000)
+    
+    if os.path.exists(path):
+	    os.remove(path)
 
-    return make_response(True)
+    if not data["success"]:
+
+        return make_response(False, "Invalid PE")
+ 
+    db.session.add(PE(fname=fname, date=date, size=4, data=json.dumps(data["data"])))
+    db.session.commit()
+    pe = db.session.query(PE).order_by(PE.id.desc()).first()
+
+    return make_response(True, data=pe.id)
+
+@app.route("/api/data", methods=["GET"])
+def get():
+
+    query = db.session.execute(db.select(PE)).scalars()
+
+    data = []
+
+    for pe in query:
+
+        data.append({"id": pe.id, "fname": pe.fname, "date": pe.date, "size": pe.size, "data": pe.data})
+
+    print(data)
+    return make_response(True, data=data)
 
 if __name__ == "__main__":
 

@@ -2,13 +2,17 @@
 
 <div id="history" *ngIf="data">
     <h1>PE History</h1>
-    <div class="pe" *ngFor="let pe of data.reverse()">
+    <div class="pe" *ngFor="let pe of data.reverse().slice(0, n)">
         <p class="id">({{pe.id}})</p>
-        <p class="name">{{pe.name}}</p>
-        <p class="size">{{pe.size}} MiB</p>
+        <p class="name">{{pe.fname}}</p>
+        <p class="size">{{pe.size}} kB</p>
         <p class="date">{{pe.date}}</p>
         <img class="view"
             src="/assets/icons/view.png"
             routerLink="/detail/{{pe.id}}" />
+    </div>
+    <div id="more" *ngIf="data.reverse().length > n" (click)="incrementView()">
+        <img id="more-icon" src="assets/icons/down.png" />
+        <h1>More</h1>
     </div>
 </div>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import { PeService } from '../pe.service';
+import { ApiService } from '../api.service';
 
 @Component({
     selector: 'app-history',
@@ -10,12 +9,22 @@ import { PeService } from '../pe.service';
 export class HistoryComponent {
 
     data?: Array<any>;
+    n: number = 5;
 
-    constructor(private peService: PeService) { }
+    constructor(private apiService: ApiService) { }
 
     ngOnInit(): void {
 
-        this.peService.getData()
-            .subscribe(data => this.data = data);
+        this.apiService.getData()
+            .subscribe(data => {
+                console.log(data);
+                this.data = data.data;
+            });
+    }
+
+    incrementView(): void {
+
+        console.log("test");
+        this.n += 5;
     }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from "rxjs";
+import { ApiService } from './api.service';
 
 import { data } from './static';
 
@@ -9,7 +10,7 @@ import { data } from './static';
 })
 export class PeService {
 
-    constructor() { }
+    constructor(private apiService: ApiService) { }
 
     getData(): Observable<Array<any>> {
 

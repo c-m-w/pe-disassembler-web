@@ -52,3 +52,28 @@
 .view:hover {
     cursor: pointer;
 }
+
+#history #more {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0;
+    padding-top: 0.5rem;
+
+    background-image: linear-gradient(var(--dark), var(--light) 25%);
+}
+
+#history #more:hover {
+    cursor: pointer;
+}
+
+#history #more #more-icon {
+    width: 1.25rem;
+}
+
+#history #more h1 {
+    margin: 0;
+    border-bottom: none;
+}
