@@ -1,0 +1,14 @@
+<!-- detail -->
+
+<div id="detail">
+    <h1>{{pe.name}}</h1>
+    <h2>{{pe.date}}</h2>
+
+    <app-section-header
+        [name]="'NT Header'"
+        [enabled]="showSections[0]"
+        (onToggle)="toggleSection(0)"></app-section-header>
+    <section *ngIf="showSections[0]">
+        <h1>yo</h1>
+    </section>
+</div>

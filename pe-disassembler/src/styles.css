@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/* global styles */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--light);
+
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text);
+
+    /* variables */
+    --border: #707070;
+    --dark: #E2DDD6;
+    --light: #F6F6F4;
+    --text: #707070;
+}
