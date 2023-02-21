@@ -30,11 +30,39 @@ with app.app_context():
 @app.route("/<path:path>")
 def client(path):
 
-    proc = subprocess.Popen(["./backend/test-print"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print("send index")
 
-    out, error = proc.communicate()
+    return send_from_directory("public/", "index.html")
 
-    return "output: " + out.decode("ascii")
+##############################
+#
+# static js, css
+#
+##############################
+
+@app.route("/static/<string:file>")
+def send_static(file):
+
+    print("send static", file)
+
+    return send_from_directory("public/", file)
+
+##############################
+#
+# assets
+#
+##############################
+
+@app.route("/assets/icons/<string:file>")
+def send_asset(file):
+
+    return send_from_directory("public/assets/icons/", file)
+
+##############################
+#
+# api
+#
+##############################
 
 @app.route("/api/upload", methods=["POST"])
 def upload():
@@ -67,7 +95,7 @@ def upload():
 
         return make_response(False, "Invalid PE")
  
-    db.session.add(PE(fname=fname, date=date, size=4, data=json.dumps(data["data"])))
+    db.session.add(PE(fname=fname, date=date, size=size, data=json.dumps(data["data"])))
     db.session.commit()
     pe = db.session.query(PE).order_by(PE.id.desc()).first()
 
