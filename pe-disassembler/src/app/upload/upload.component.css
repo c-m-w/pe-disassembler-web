@@ -13,10 +13,15 @@
     background-image: url("/assets/icons/file.png");
     background-size: cover;
     margin-left: -0.5rem;
+    
+    transition: transform 0.1s linear;
 }
 
 #upload label:hover {
     cursor: pointer;
+
+    transition: transform 0.1s linear;
+    transform: scale(1.05);
 }
 
 #upload input {
