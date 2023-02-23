@@ -2,6 +2,8 @@ import { Injectable, NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { MessengerService } from './messenger.service';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -15,7 +17,6 @@ export class ApiService {
 
         formData.append("fileKey", f, f.name);
 
-        console.log("requesting..");
         return this.http.post("http://127.0.0.1:5000/api/upload", formData, {headers: {}});
     }
 

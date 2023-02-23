@@ -1,7 +1,13 @@
 <!-- messages -->
 
 <div class="messages">
-    <div class="message" *ngFor="let message of getMessages()">
-        
+    <div class="message"
+        *ngFor="let message of getMessages().reverse(); let i = index"
+        [class.waning]="message.waning"
+        [style.transform]="'translateY(-' + (i * 82 + 20) + 'px)'">
+        <img *ngIf="isInfoMessage(message)" src="assets/icons/info.png" />
+        <img *ngIf="isSuccessMessage(message)" src="assets/icons/check.png" />
+        <img *ngIf="isErrorMessage(message)" src="assets/icons/x.png" />
+        <p>{{message.message}}</p>
     </div>
 </div>

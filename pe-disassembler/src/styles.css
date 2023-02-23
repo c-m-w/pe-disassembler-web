@@ -18,3 +18,14 @@ body {
     --light: #F6F6F4;
     --text: #707070;
 }
+
+@keyframes fadein {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

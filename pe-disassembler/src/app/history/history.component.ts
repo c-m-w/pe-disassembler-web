@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
+import Message from '../message';
+
+import { MessengerService } from '../messenger.service';
 
 @Component({
     selector: 'app-history',
@@ -11,20 +14,28 @@ export class HistoryComponent {
     data?: Array<any>;
     n: number = 5;
 
-    constructor(private apiService: ApiService) { }
+    constructor(private apiService: ApiService,
+        private messengerService: MessengerService) { }
 
     ngOnInit(): void {
 
-        this.apiService.getData()
-            .subscribe(data => {
-                console.log(data);
-                this.data = data.data;
-            });
+        setTimeout(() => {
+            this.messengerService.addMessage(new Message(Message.M_INFO, "Requesting PE history..."))
+            
+            setTimeout(() => {
+
+                this.apiService.getData()
+                    .subscribe(data => {
+                        
+                        this.messengerService.addMessage(new Message(Message.M_SUCCESS, "Retrieved PE history"))
+                        this.data = data.data;
+                    });
+            }, 500);
+        }, 1000)
     }
 
     incrementView(): void {
 
-        console.log("test");
         this.n += 5;
     }
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ApiService } from '../api.service';
+import Message from '../message';
+import { MessengerService } from '../messenger.service';
 
 @Component({
     selector: 'app-upload',
@@ -11,18 +13,21 @@ import { ApiService } from '../api.service';
 export class UploadComponent {
 
     constructor(private apiService: ApiService,
+        private messengerService: MessengerService,
         private route: Router) { }
 
     uploadFile(e: any): void {
 
-        const file = e.target.files[0]
+        this.messengerService.addMessage(new Message(Message.M_INFO, "Begin uploading file..."));
+        const file = e.target.files[0];
 
         this.apiService.uploadFile(file)
             .subscribe(data => {
-                if (data.success) {
+                if (data && data.success) {
 
-                    this.route.navigate([`detail/${data.data}`])
-                } else {
+                    this.messengerService.addMessage(new Message(Message.M_SUCCESS, "Uploaded file"));
+                    this.route.navigate([`detail/${data.data}`]);
+                } else if (data) {
                     // todo error
                 }
             });
