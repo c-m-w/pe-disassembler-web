@@ -1,0 +1,11 @@
+/* messages styles */
+
+.messages {
+    position: absolute;
+    bottom: 1rem;
+    left: 50vw;
+    transform: translateX(-50%);
+    width: 390px;
+
+    background-color: black;
+}

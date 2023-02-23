@@ -10,6 +10,7 @@ import { DetailComponent } from './detail/detail.component';
 import { UploadComponent } from './upload/upload.component';
 import { HistoryComponent } from './history/history.component';
 import { SectionHeaderComponent } from './section-header/section-header.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { SectionHeaderComponent } from './section-header/section-header.componen
         DetailComponent,
         UploadComponent,
         HistoryComponent,
-        SectionHeaderComponent
+        SectionHeaderComponent,
+        MessagesComponent
     ],
     imports: [
         BrowserModule,
