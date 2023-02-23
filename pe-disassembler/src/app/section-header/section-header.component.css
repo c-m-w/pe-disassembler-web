@@ -22,4 +22,6 @@
 
 .section-header img {
     width: 1rem;
+
+    transition: transform 0.5s cubic-bezier(.2,2.3,.72,1);
 }

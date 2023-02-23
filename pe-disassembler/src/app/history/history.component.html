@@ -4,7 +4,7 @@
     <h1>PE History</h1>
     <div class="pe"
         *ngFor="let pe of data.reverse().slice(0, n); let i = index"
-        [style.animation]="'0.5s linear ' + (i + 1) * 0.5 + 's fadein forwards'">
+        [style.animation]="'0.5s linear ' + (n === 5 ? (i + 1) : (i - n + 5)) * 0.5 + 's fadein forwards'">
         <p class="id">({{pe.id}})</p>
         <p class="name">{{pe.fname}}</p>
         <p class="size">{{pe.size}} kB</p>
@@ -13,7 +13,10 @@
             src="/assets/icons/view.png"
             routerLink="/detail/{{pe.id}}" />
     </div>
-    <div id="more" *ngIf="data.reverse().length > n" (click)="incrementView()">
+    <div id="more"
+        *ngIf="data.reverse().length > n"
+        (click)="incrementView()"
+        [style.animation]="'0.5s linear ' + 3 + 's fadein forwards'">
         <img id="more-icon" src="assets/icons/down.png" />
         <h1>More</h1>
     </div>

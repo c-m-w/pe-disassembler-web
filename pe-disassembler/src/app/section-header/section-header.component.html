@@ -1,7 +1,6 @@
 <!-- section-header -->
 
 <div class="section-header" (click)="onToggle.emit()">
-    <img src="/assets/icons/down.png" *ngIf="enabled" />
-    <img src="/assets/icons/right.png" *ngIf="!enabled" />
+    <img src="/assets/icons/right.png" [style.transform]="'rotate(' + (enabled ? 90 : 0) + 'deg)'"/>
     <h1>{{name}}</h1>
 </div>

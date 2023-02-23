@@ -6,7 +6,6 @@
 }
 
 #upload label {
-    
     display: inline-block;
     width: 6rem;
     height: 6rem;
@@ -17,7 +16,28 @@
     transition: transform 0.1s linear;
 }
 
-#upload label:hover {
+#upload label.uploaded {
+    background-image: url("/assets/icons/check.png");
+    margin-left: 0.5rem;
+}
+
+@keyframes breathing {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.25;
+    }
+}
+
+#upload .breathing {
+
+    animation: 1s ease-in-out breathing alternate infinite;
+}
+
+#upload label:hover:not(.breathing) {
     cursor: pointer;
 
     transition: transform 0.1s linear;

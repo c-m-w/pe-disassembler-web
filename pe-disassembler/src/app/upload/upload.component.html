@@ -1,7 +1,9 @@
 <!-- upload -->
 
 <div id="upload">
-    <label for="file"></label>
+    <label for="file" [class.breathing]="uploading" [class.uploaded]="uploaded"></label>
     <input type="file" id="file" (change)="uploadFile($event)" />
-    <p>Upload a file...</p>
+    <p *ngIf="!uploading && !uploaded">Upload a file...</p>
+    <p *ngIf="uploading && !uploaded" [class.breathing]="uploading">Uploading...</p>
+    <p *ngIf="uploaded">Uploaded!</p>
 </div>

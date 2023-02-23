@@ -68,6 +68,8 @@
     margin-top: 0;
     padding-top: 0.5rem;
 
+    opacity: 0;
+    
     background-image: linear-gradient(var(--dark), var(--light) 25%);
 }
 

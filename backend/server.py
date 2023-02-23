@@ -3,6 +3,7 @@
 import subprocess
 import os
 import json
+import time
 from datetime import datetime
 
 from flask import Flask, send_from_directory, request
@@ -30,8 +31,6 @@ with app.app_context():
 @app.route("/<path:path>")
 def client(path):
 
-	print("send index")
-
 	return send_from_directory("public/", "index.html")
 
 ##############################
@@ -42,8 +41,6 @@ def client(path):
 
 @app.route("/static/<string:file>")
 def send_static(file):
-
-	print("send static", file)
 
 	return send_from_directory("public/", file)
 
@@ -67,7 +64,7 @@ def send_asset(file):
 @app.route("/api/upload", methods=["POST"])
 def upload():
 
-	print(request.files)
+	time.sleep(1)
 
 	if "fileKey" not in request.files:
 		# todo handle error

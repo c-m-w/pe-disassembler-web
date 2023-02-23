@@ -38,6 +38,11 @@
     margin-bottom: 1rem;
 }
 
+#detail section {
+    opacity: 0;
+    animation: 0.5s linear fadein 0.5s forwards;
+}
+
 #detail section p {
     font-size: 0.875rem;
     font-weight: 300;

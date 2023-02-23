@@ -11,12 +11,7 @@ import { MessengerService } from '../messenger.service';
 })
 export class MessagesComponent {
 
-	constructor(private messengerService: MessengerService) { 
-
-        messengerService.addMessage(new Message(Message.M_INFO, "info"))
-        messengerService.addMessage(new Message(Message.M_SUCCESS, "success"))
-        messengerService.addMessage(new Message(Message.M_ERROR, "error"))
-    }
+	constructor(private messengerService: MessengerService) { }
 
 	getMessages(): Message[] {
 
