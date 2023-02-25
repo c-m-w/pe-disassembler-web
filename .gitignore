@@ -40,3 +40,4 @@ pe-disassembler/typings
 # System files
 .DS_Store
 pe-disassembler/Thumbs.db
+/.metadata/
