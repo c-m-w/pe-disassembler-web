@@ -8,6 +8,10 @@
     width: 390px;
 }
 
+.message-padding {
+    margin-top: 1rem;
+}
+
 .message {
     display: flex;
     flex-direction: row;
@@ -21,7 +25,6 @@
     border: 1px solid var(--dark);
     background-image: linear-gradient(var(--dark), var(--light) 40%);
     border-radius: 10px;
-    margin-top: 1rem;
 }
 
 .message img {

@@ -22,8 +22,9 @@ import { MessengerService } from "../messenger.service";
             transition(":increment", [
                 group([
                     query(":enter", [
-                        style({ transform: "translateY(100%)", opacity: 0 }),
-                        animate("500ms 500ms cubic-bezier(0,1.14,.75,.99)", style({ transform: "*", opacity: 1 })),
+                        style({ transform: "translateY(100%)", opacity: 0, height: 0 }),
+                        animate("300ms cubic-bezier(0,1.14,.75,.99)", style({height: "*"})),
+                        animate("500ms 100ms cubic-bezier(0,1.14,.75,.99)", style({ transform: "*", opacity: 1 })),
                     ])
                 ])
             ]),

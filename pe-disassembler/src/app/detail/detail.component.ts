@@ -34,46 +34,20 @@ import { ApiService } from '../api.service';
             ])
         ]),
         trigger("sectionAnimation", [
-            // transition(":increment", [
-            //     group([
-            //         query(":enter", [
-            //             style({ height: 0 }),
-            //             animate("500ms cubic-bezier(0,2.25,.62,.81)", style({ height: "*" })),
-            //             animateChild()
-            //         ], { optional: true }),
-            //         query(":leave", [
-            //             style({
-            //                 height: "*"
-            //              }),
-            //             animate("500ms 500ms cubic-bezier(0,2.25,.62,.81)", style({
-            //                 height: 0,
-            //              })),
-            //             animateChild()
-            //         ], { optional: true }),
-            //         query("section:enter", [
-            //             style({ 
-            //                 transform: "translateX(-25%)",
-            //                 opacity: 0
-            //             }),
-            //             animate("300ms 500ms cubic-bezier(0,2.25,.62,.81)", style({
-            //                 transform: "none",
-            //                 opacity: 1
-            //             })),
-            //             animateChild()
-            //         ], { optional: true }),
-            //         query("section:leave", [
-            //             style({ 
-            //                 opacity: 1,
-            //                 position: "relative"
-            //             }),
-            //             animate("50ms cubic-bezier(0,2.25,.62,.81)", style({
-            //                 transform: "translateX(25%)", 
-            //                 opacity: 0
-            //             })),
-            //             animateChild()
-            //         ], { optional: true })
-            //     ]),
-            // ])
+            transition(":increment", [
+                group([
+                    query("section:enter", [
+                        style({ height: 0, opacity: 0 }),
+                        animate("500ms cubic-bezier(.17,2,.25,.87)", style({
+                            height: "*",
+                            opacity: 1
+                        }))
+                    ]),
+                    query(".section-header", [
+                        animateChild()
+                    ])
+                ])
+            ])
         ])
     ]
 })
@@ -103,8 +77,8 @@ export class DetailComponent {
 
     toggleSection(section: number): void {
 
-        this.showCounter += 1;
         this.showSections[section] = !this.showSections[section];
+        this.showCounter += this.showSections[section] ? 1 : -1;
     }
 
     goBack(): void {
