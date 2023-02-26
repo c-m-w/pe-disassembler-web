@@ -1,10 +1,5 @@
 /* history styles */
 
-#history {
-
-    animation: 1s fadein;
-}
-
 #history h1 {
     font-size: 1.5rem;
     font-weight: 400;
@@ -26,7 +21,6 @@
 
     background-image: linear-gradient(var(--dark), var(--light) 7%, var(--light) 93%, var(--dark));
 
-    opacity: 0;
     margin-bottom: 1.5rem;
 }
 
@@ -67,8 +61,6 @@
     justify-content: center;
     margin-top: 0;
     padding-top: 0.5rem;
-
-    opacity: 0;
     
     background-image: linear-gradient(var(--dark), var(--light) 25%);
 }

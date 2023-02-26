@@ -35,12 +35,8 @@
 }
 
 #detail .data-display.sections:last-child {
-    margin-bottom: 1rem;
-}
-
-#detail section {
-    opacity: 0;
-    animation: 0.5s linear fadein 0.5s forwards;
+    margin-bottom: 0rem;
+    padding-bottom: 1rem;
 }
 
 #detail section p {

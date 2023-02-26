@@ -1,6 +1,8 @@
 <!-- section-header -->
 
-<div class="section-header" (click)="onToggle.emit()">
-    <img src="/assets/icons/right.png" [style.transform]="'rotate(' + (enabled ? 90 : 0) + 'deg)'"/>
+<div class="section-header"
+    (click)="onToggle.emit()"
+    [@arrowAnimation]="enabled ? 'true' : 'false'">
+    <img src="/assets/icons/right.png" [class.rotated]="enabled"/>
     <h1>{{name}}</h1>
 </div>

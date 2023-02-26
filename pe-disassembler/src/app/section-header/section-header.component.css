@@ -11,6 +11,10 @@
     padding-top: 0.25rem;
 }
 
+.rotated {
+    transform: rotate(90deg);
+}
+
 .section-header:hover {
     cursor: pointer;
 }
@@ -22,6 +26,4 @@
 
 .section-header img {
     width: 1rem;
-
-    transition: transform 0.5s cubic-bezier(.2,2.3,.72,1);
 }

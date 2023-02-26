@@ -1,6 +1,9 @@
 <!-- detail -->
 
-<div id="detail">
+<div id="detail"
+    *ngIf="pe"
+    [@headerAnimation]="pe"
+    [@sectionAnimation]="showCounter">
     <img class="go-back" src="/assets/icons/go-back.png" (click)="goBack()" />
     <h1>{{pe.fname}}</h1>
     <h2>{{pe.date}}</h2>
@@ -9,7 +12,9 @@
         [name]="'NT Header'"
         [enabled]="showSections[0]"
         (onToggle)="toggleSection(0)"></app-section-header>
-    <section class="data-display" *ngIf="showSections[0]">
+    <section 
+        class="data-display"
+        *ngIf="showSections[0]">
         <p>Image base:</p>
         <p class="value">0x{{pe.data.nt.image_base.toString(16) | uppercase}}</p>
         <p>Image size:</p>

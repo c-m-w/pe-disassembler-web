@@ -1,10 +1,9 @@
 <!-- history -->
 
-<div id="history" *ngIf="data">
-    <h1>PE History</h1>
+<div id="history" [@fadeAnimation]="n">
+    <h1 *ngIf="data.length !== 0">PE History</h1>
     <div class="pe"
-        *ngFor="let pe of data.reverse().slice(0, n); let i = index"
-        [style.animation]="'0.5s linear ' + (n === 5 ? (i + 1) : (i - n + 5)) * 0.5 + 's fadein forwards'">
+        *ngFor="let pe of data.reverse().slice(0, n)">
         <p class="id">({{pe.id}})</p>
         <p class="name">{{pe.fname}}</p>
         <p class="size">{{pe.size}} kB</p>
@@ -15,8 +14,7 @@
     </div>
     <div id="more"
         *ngIf="data.reverse().length > n"
-        (click)="incrementView()"
-        [style.animation]="'0.5s linear ' + 3 + 's fadein forwards'">
+        (click)="incrementView()">
         <img id="more-icon" src="assets/icons/down.png" />
         <h1>More</h1>
     </div>

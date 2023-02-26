@@ -24,16 +24,6 @@
     background-image: linear-gradient(var(--dark), var(--light) 40%);
     border-radius: 10px;
     margin: 0;
-
-    animation: 0.5s fadein;
-    transition: opacity linear 0.5s;
-    transition: transform cubic-bezier(.2,2.3,.72,1) 0.5s;
-}
-
-.message.waning {
-
-    transition: opacity linear 0.5s;
-    opacity: 0;
 }
 
 .message img {
