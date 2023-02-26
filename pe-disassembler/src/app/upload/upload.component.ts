@@ -1,10 +1,13 @@
 import { Component, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
-import { trigger,
+import {
+    trigger,
     transition,
     query,
     style,
-    animate } from "@angular/animations"
+    state,
+    animate
+} from "@angular/animations"
 
 import { ApiService } from '../api.service';
 import Message from '../message';
@@ -15,21 +18,28 @@ import { MessengerService } from '../messenger.service';
     templateUrl: './upload.component.html',
     styleUrls: ['./upload.component.css'],
     animations: [
-        trigger("flyIn", [
-            transition(":enter", [
-                query("#upload", [
-                    style({transform: "scale(0)"}),
-                    animate("500ms cubic-bezier(.32,1.93,.74,.83)", style({
-                        transform: "scale(1.0)"
-                    }))
-                ])
+        trigger("imageLoaded", [
+            state("false",
+                style({
+                    opacity: 0,
+                    transform: "scale(0.5)"
+                })
+            ),
+            state("true",
+                style({
+                    opacity: 1,
+                    transform: "scale(1)"
+                })
+            ),
+            transition("false => true", [
+                animate("500ms cubic-bezier(.32,1.93,.74,.83)")
             ])
         ])
     ]
 })
 export class UploadComponent {
-    @HostBinding("@flyIn")
 
+    imageLoaded: boolean = false;
     uploading: boolean = false;
     uploaded: boolean = false;
 

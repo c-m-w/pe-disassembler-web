@@ -21,12 +21,6 @@ import { MessengerService } from "../messenger.service";
         trigger("bounceIn", [
             transition(":increment", [
                 group([
-                    query(".message", [
-                        style({ transform: "none" }),
-                        stagger(100, [
-                            animate("500ms cubic-bezier(0,1.14,.75,.99)", style({ transform: "*" })),
-                        ]),
-                    ]),
                     query(":enter", [
                         style({ transform: "translateY(100%)", opacity: 0 }),
                         animate("500ms 500ms cubic-bezier(0,1.14,.75,.99)", style({ transform: "*", opacity: 1 })),

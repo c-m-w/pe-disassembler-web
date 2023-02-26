@@ -9,16 +9,18 @@
     display: inline-block;
     width: 6rem;
     height: 6rem;
-    background-image: url("/assets/icons/file.png");
     background-size: cover;
     margin-left: -0.5rem;
     
     transition: transform 0.1s linear;
 }
 
-#upload label.uploaded {
-    background-image: url("/assets/icons/check.png");
-    margin-left: 0.5rem;
+#upload label img {
+    width: 100%;
+}
+
+#upload label img.uploaded {
+    margin-left: 1.0rem;
 }
 
 @keyframes breathing {

@@ -1,7 +1,18 @@
 <!-- upload -->
 
-<div id="upload">
-    <label for="file" [class.breathing]="uploading" [class.uploaded]="uploaded"></label>
+<div id="upload"
+    [@imageLoaded]="imageLoaded">
+    <label for="file">
+        <img src="/assets/icons/file.png"
+            [class.breathing]="uploading"
+            [class.uploaded]="uploaded"
+            *ngIf="!uploaded"
+            (load)="imageLoaded = true" />
+        <img src="/assets/icons/check.png"
+            [class.breathing]="uploading"
+            [class.uploaded]="uploaded"
+            *ngIf="uploaded" />
+    </label>
     <input type="file" id="file" (change)="uploadFile($event)" />
     <p *ngIf="!uploading && !uploaded">Upload a file...</p>
     <p *ngIf="uploading && !uploaded" [class.breathing]="uploading">Uploading...</p>
