@@ -57,14 +57,16 @@
         [name]="'Imports'"
         [enabled]="showSections[3]"
         (onToggle)="toggleSection(3)"></app-section-header>
-    <section *ngIf="showSections[3]">
-        <div class="data-display" *ngFor="let module of pe.data.imports">
+    <section *ngIf="showSections[3]" [@totalImports]="totalImports">
+        <input type="text" #importFilter (input)="filterImports(importFilter.value)" placeholder="Filter modules..." />
+        <div class="data-display module" *ngFor="let module of filteredImports">
             <h1 class="full-span">{{module.module}}:</h1>
             <div class="sections data-display sub-list" *ngFor="let import of module.list; let i = index">
                 <h1>({{i + 1}})</h1>
                 <p class="label">{{import}}</p>
             </div>
         </div>
+        <h2 *ngIf="totalImports === 0">No modules match criteria...</h2>
     </section>
 
     <app-section-header

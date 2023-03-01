@@ -1,6 +1,7 @@
 /* app styles */
 
 #content {
-    width: 390px;
+    max-width: 390px;
     margin: 1rem auto;
+    padding: 0 1rem;
 }

@@ -3,11 +3,11 @@
 header {
     background-image: linear-gradient(var(--dark), var(--light));
     
-    padding-top: 1rem;
+    padding: 1rem;
 }
 
 header > div {
-    width: max-content;
+    max-width: max-content;
     margin: 0 auto;
     border-bottom: 1px solid var(--border);
 }

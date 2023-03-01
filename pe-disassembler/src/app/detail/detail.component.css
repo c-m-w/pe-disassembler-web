@@ -78,3 +78,8 @@
 #detail .data-display p.value {
     justify-self: end;
 }
+
+#detail input {
+    width: 100%;
+    margin-bottom: 1rem;
+}

@@ -74,7 +74,7 @@ def upload():
 
 	if file.filename == "" or not allowed_file(file.filename):
 
-		return make_response(False, "Bad file")
+		return make_response(False, "Invalid file type")
 	
 	fname = secure_filename(file.filename)
 	path = os.path.join(app.config['UPLOAD_FOLDER'], fname)
@@ -90,7 +90,7 @@ def upload():
 
 	if not data["success"]:
 
-		return make_response(False, "Invalid PE")
+		return make_response(False, data["message"])
  
 	db.session.add(PE(fname=fname, date=date, size=size, data=json.dumps(data["data"])))
 	db.session.commit()
@@ -109,7 +109,6 @@ def get():
 
 		data.append({"id": pe.id, "fname": pe.fname, "date": pe.date, "size": pe.size, "data": pe.data})
 
-	print(data)
 	return make_response(True, data=data)
 
 if __name__ == "__main__":

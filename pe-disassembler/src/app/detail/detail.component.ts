@@ -36,7 +36,7 @@ import { ApiService } from '../api.service';
         trigger("sectionAnimation", [
             transition(":increment", [
                 group([
-                    query("section:enter", [
+                    query("section:enter, .data-display", [
                         style({ height: 0, opacity: 0 }),
                         animate("500ms cubic-bezier(.17,2,.25,.87)", style({
                             height: "*",
@@ -48,12 +48,34 @@ import { ApiService } from '../api.service';
                     ])
                 ])
             ])
+        ]),
+        trigger("totalImports", [
+            transition(":increment", [
+                query(".module:enter", [
+                    style({height: 0, opacity: 0}),
+                    animate("500ms ease-out", style({
+                        height: "*",
+                        opacity: 1
+                    }))
+                ])
+            ]),
+            transition(":decrement", [
+                query(".module:leave", [
+                    style({height: "*", opacity: 1}),
+                    animate("500ms ease-in", style({
+                        height: 0,
+                        opacity: 0
+                    }))
+                ])
+            ])
         ])
     ]
 })
 export class DetailComponent {
 
     pe?: any;
+    filteredImports: Array<any> = [];
+    totalImports: number = 0;
     showCounter: number = 0;
     showSections: boolean[] = [false, false, false, false, false];
 
@@ -69,16 +91,28 @@ export class DetailComponent {
             .subscribe(data => {
                 const pe = data.data[id - 1];
 
-                console.log(data.data);
                 this.pe = { ...pe, data: JSON.parse(pe.data) };
-                console.log(this.pe);
+                this.filterImports("");
             });
+    }
+
+    filterImports(filter: string): void {
+
+        filter = filter ? filter.trim().toLowerCase() : '';
+
+        this.filteredImports = this.pe.data.imports.filter((module: any) => module.module.toLowerCase().includes(filter));
+        this.totalImports = this.filteredImports.length
     }
 
     toggleSection(section: number): void {
 
         this.showSections[section] = !this.showSections[section];
         this.showCounter += this.showSections[section] ? 1 : -1;
+
+        if (section === 3) {
+            
+            this.filterImports("");
+        }
     }
 
     goBack(): void {
