@@ -76,7 +76,10 @@
 }
 
 #detail .data-display p.value {
-    justify-self: end;
+    width: 100%;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
 }
 
 #detail input {
